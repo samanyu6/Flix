@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../../components/detailsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../components/cardComponent.dart';
@@ -93,7 +94,17 @@ class _MoviesState extends State<Movies> {
                      return Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[ 
-                          CardComponent(img: topMovies[keys[index]]['img'].toString(), height: Height*0.24, width: Width*0.4),
+                          new GestureDetector( 
+                            onTap:()=> Navigator.push(
+                              context, 
+                              MaterialPageRoute(
+                                builder: (context)=> detailPage(link: (topMovies[keys[index]]['link']).toString(), 
+                                                                img:topMovies[keys[index]]['img'].toString(),
+                                                                title: keys[index])
+                              )
+                            ),
+                            child: CardComponent(img: topMovies[keys[index]]['img'].toString(), height: Height*0.24, width: Width*0.4),
+                          )
                         ]
                     );
                }),

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import './screens/bottomTab.dart';    //Bottom Navigation Bar + appBar
-import './components/cardComponent.dart';
+// import './components/detailsPage.dart';
 
 void main() => runApp(MaterialApp(
 
@@ -10,6 +10,7 @@ void main() => runApp(MaterialApp(
 
           '/': (context)=> SplashScreen(),
           '/home' : (context) => appBar(),
+          // '/details' : (context) => detailPage()
           // '/card' : (context) => CardComponent()
 
       },

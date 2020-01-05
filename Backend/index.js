@@ -207,12 +207,6 @@ function popularShowList(){
             }, timeOut)    
 }
 
-function getImg(json){
-    for(i in json){
-        console.log(i)
-    }
-}
-
 //Open APIs 
 //To get list of trending movies
 app.get('/top-movies',function(req,res){
@@ -271,7 +265,21 @@ app.get('/pop-movies', function(req,res){
             }
         })
     },100)
-})
+});
+
+app.get('/details', function(req,res){
+    request("http://www.levidia.ch/movie.php?watch=the-fish-that-saved-pittsburgh", function(err,res,body){
+        if(err){
+            console.log('err');
+        }
+        if(body){    
+            $ = cheerio.load(body);
+            subtitle = $('div.plot').text();
+            genres = $('div.kanan genre').attr('a');
+            console.log(genres);
+     }
+    });
+});
 
 //Run server
 app.listen(9000, ()=>{
